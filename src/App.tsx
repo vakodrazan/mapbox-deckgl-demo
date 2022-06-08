@@ -77,17 +77,17 @@ function Root() {
     stroked: false,
     filled: true,
     extruded: true,
-    getFillColor: [230, 255, 250, 255],
-    getElevation: 0,
+    getFillColor: () => [230, 255, 250, 255],
+    getElevation: () => 0,
   });
 
   const outlinePolyPoints = geojson.coordinates[0];
   const outlinelayer = new PolygonLayer({
     id: 'outline-layer',
     data: [{ contour: outlinePolyPoints }],
-    getDashArray: [14, 4],
+    getDashArray:() => [14, 4],
     getLineColor: () => [155, 155, 155],
-    getLineWidth: 0.2,
+    getLineWidth: () => 0.2,
     dashJustified: true,
     filled: false,
     getPolygon: (d: any) => {
@@ -125,12 +125,12 @@ function Root() {
       ? [color + 55, color + 55, color - 55, 255]
       : [color, color + 55, color, 255];
     const buildingFloorLayer = new SolidPolygonLayer({
-      getFillColor: colorRGB,
+      getFillColor: () => colorRGB,
       data: polData,
       getPolygon: (d: any) => d.polygon,
-      getColor: [255, 0, 0],
+      getColor: () => [255, 0, 0],
       extruded: true,
-      getElevation: localFloorHeight,
+      getElevation: () => localFloorHeight,
     });
     return buildingFloorLayer;
   });
