@@ -90,7 +90,7 @@ function Root() {
     getLineWidth: 0.2,
     dashJustified: true,
     filled: false,
-    getPolygon: (d: { contour: number[] }) => {
+    getPolygon: (d: any) => {
       return d.contour;
     },
     dashGapPickable: true,
@@ -127,7 +127,7 @@ function Root() {
     const buildingFloorLayer = new SolidPolygonLayer({
       getFillColor: colorRGB,
       data: polData,
-      getPolygon: (d: { polygon: string }) => d.polygon,
+      getPolygon: (d: any) => d.polygon,
       getColor: [255, 0, 0],
       extruded: true,
       getElevation: localFloorHeight,
